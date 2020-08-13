@@ -40,7 +40,9 @@ const BarChart = ({ title, data, width, height, dataKey }) => {
       >
         <CartesianGrid strokeDasharray="4 4" />
         <XAxis dataKey="name" />
-        <YAxis label={{ value: captializeDataKey, angle: -90, position: "insideLeft" }} />
+        <YAxis
+          label={{ value: captializeDataKey, angle: -90, position: "insideLeft", offset: -5 }}
+        />
         <Tooltip />
         <Bar dataKey={dataKey} fill="#8884d8">
           {data.map((entry, index) => {
