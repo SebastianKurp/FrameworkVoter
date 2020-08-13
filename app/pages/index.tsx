@@ -22,6 +22,7 @@ const Dashboard = styled.div`
   max-height: 100%;
   width: 100%;
   background-color: #4e8098;
+  position: relative;
 `
 
 const DashboardSpacer = styled.div`
@@ -30,6 +31,26 @@ const DashboardSpacer = styled.div`
   margin-left: 16px;
   margin-right: 16px;
 `
+
+const ErrorMsg = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  top: 0;
+  position: absolute;
+  z-index: 20
+  background-color: red;
+  width: 100%;
+  background-color:#EF5350;
+`
+
+const ErrorMessage = () => {
+  return <ErrorMsg>Error: Github API Limit Reached!</ErrorMsg>
+}
 
 const DashboardCard = ({ width, height, fetchData }) => {
   const Card = styled.div`
@@ -105,9 +126,12 @@ const DashboardCard = ({ width, height, fetchData }) => {
 
 const Home = () => {
   const [data, setData] = useState([{}])
+  const [showWarningMsg, setShowWarningMsg] = useState(false)
 
   const fetchData = async () => {
-    const respReact = await axios(`https://api.github.com/repos/facebook/react`)
+    const respReact = await axios(`https://api.github.com/repos/facebook/react`).catch(() =>
+      setShowWarningMsg(true)
+    )
     const respAngular = await axios(`https://api.github.com/repos/Angular/angular.js`)
     const respEmber = await axios(`https://api.github.com/repos/emberjs/ember.js`)
     const respVue = await axios(`https://api.github.com/repos/vuejs/vue`)
@@ -159,6 +183,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Dashboard>
+        {showWarningMsg ? <ErrorMessage /> : null}
         <DashboardSpacer>
           <DashboardCard width={width} height={height} fetchData={fetchData} />
         </DashboardSpacer>
