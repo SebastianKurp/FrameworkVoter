@@ -32,7 +32,9 @@
     "blitz": "0.17.0",
     "react": "0.0.0-experimental-33c3af284",
     "react-dom": "0.0.0-experimental-33c3af284",
-    "react-error-boundary": "2.3.1"
+    "react-error-boundary": "2.3.1",
+    "recharts": "1.8.5",
+    "styled-components": "5.1.1"
   },
   "devDependencies": {
     "@types/react": "16.9.46",
