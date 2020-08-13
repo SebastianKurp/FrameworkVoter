@@ -48,59 +48,62 @@ const ErrorMsg = styled.span`
   background-color:#EF5350;
 `
 
+const Title = styled.span`
+  font-size: 24px;
+  font-weight: bold;
+`
+
+const Paragraph = styled.p`
+  font-size: 16px;
+  text-align: center;
+`
+
+const Button = styled.button`
+  background: #4e8098;
+  border: 2px solid #556699;
+  border-radius: 11px;
+  box-shadow: 0 1px #444444;
+  padding: 13px 33px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 21px/1 "Open Sans", sans-serif;
+  text-align: center;
+  cursor: pointer;
+  min-width: 200px;
+  &:hover {
+    opacity: 80%;
+  }
+`
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #ffffff;
+  border: 4px solid #00a9a5;
+  border-radius: 4px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  padding: 13px;
+`
+
 const ErrorMessage = () => {
   return <ErrorMsg>Error: Github API Limit Reached!</ErrorMsg>
 }
 
 const DashboardCard = ({ width, height, fetchData }) => {
-  const Card = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #ffffff;
-    border: 4px solid #00a9a5;
-    border-radius: 4px;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    min-width: ${width}px;
-    max-width: ${width}px;
-    min-height: ${height}px;
-    padding: 13px;
-  `
-
-  const Title = styled.span`
-    font-size: 24px;
-    font-weight: bold;
-  `
-
-  const Paragraph = styled.p`
-    font-size: 16px;
-    text-align: center;
-  `
-
-  const Button = styled.button`
-    background: #4e8098;
-    border: 2px solid #556699;
-    border-radius: 11px;
-    box-shadow: 0 1px #444444;
-    padding: 13px 33px;
-    color: #ffffff;
-    display: inline-block;
-    font: normal bold 21px/1 "Open Sans", sans-serif;
-    text-align: center;
-    cursor: pointer;
-    min-width: 200px;
-    &:hover {
-      opacity: 80%;
-    }
-  `
-
   const [loading, setLoading] = useState(false)
 
+  const cardStyle = {
+    minWidth: `${width}px`,
+    maxWidth: `${width}px`,
+    minHeight: `${height}px`,
+  }
+
   return (
-    <Card>
+    <Card style={cardStyle}>
       <Title>Javascript Frameworks Data</Title>
       <Paragraph>
         A dashboard for seeing data from popular frontend Javascript libraries. Click Vote below to
