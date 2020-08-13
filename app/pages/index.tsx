@@ -1,197 +1,113 @@
-import { Head, Link } from "blitz"
+import { useState, useEffect } from "react"
+import { Head } from "blitz"
+import styled from "styled-components"
+import axios from "axios"
+import BarChart from "../components/BarChart"
 
-const Home = () => (
-  <div className="container">
-    <Head>
-      <title>frameworkVote</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: -8px;
+`
 
-    <main>
-      <div className="logo">
-        <img src="/logo.png" alt="blitz.js" />
-      </div>
-      <p>1. Run this command in your terminal:</p>
-      <pre>
-        <code>blitz generate all project name:string</code>
-      </pre>
-      <p>2. Then run this command:</p>
-      <pre>
-        <code>blitz db migrate</code>
-      </pre>
+const PageTitle = styled.span`
+  font-size: 2em;
+  font-weight: bold;
+  color: #00a9a5;
+  text-align: center;
+`
 
-      <p>
-        3. Go to{" "}
-        <Link href="/projects">
-          <a>/projects</a>
-        </Link>
-      </p>
-      <div className="buttons">
-        <a
-          className="button"
-          href="https://github.com/blitz-js/blitz/blob/master/USER_GUIDE.md?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Documentation
-        </a>
-        <a
-          className="button-outline"
-          href="https://github.com/blitz-js/blitz"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Github Repo
-        </a>
-        <a
-          className="button-outline"
-          href="https://slack.blitzjs.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Slack Community
-        </a>
-      </div>
-    </main>
+const Dashboard = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100%;
+  background-color: #4e8098;
+`
 
-    <footer>
-      <a
-        href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by Blitz.js
-      </a>
-    </footer>
+const fakeData = [
+  {
+    name: "React",
+    stars: 100,
+  },
+  {
+    name: "Angular",
+    stars: 200,
+  },
+  {
+    name: "Vue",
+    stars: 300,
+  },
+  {
+    name: "Ember",
+    stars: 400,
+  },
+]
 
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+const Home = () => {
+  const [data, setData] = useState(fakeData)
 
-      main {
-        padding: 5rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+  const fetchData = async () => {
+    const respReact = await axios(`https://api.github.com/repos/facebook/react`)
+    const respAngular = await axios(`https://api.github.com/repos/Angular/angular.js`)
+    const respEmber = await axios(`https://api.github.com/repos/emberjs/ember.js`)
+    const respVue = await axios(`https://api.github.com/repos/vuejs/vue`)
+    const dashboardData = [
+      {
+        name: "React",
+        watchers: respReact.data.watchers_count,
+        stars: respReact.data.stargazers_count,
+        forks: respReact.data.forks_count,
+        issues: respReact.data.open_issues_count,
+      },
+      {
+        name: "Angular",
+        watchers: respAngular.data.watchers_count,
+        stars: respAngular.data.stargazers_count,
+        forks: respAngular.data.forks_count,
+        issues: respAngular.data.open_issues_count,
+      },
+      {
+        name: "Vue",
+        watchers: respVue.data.watchers_count,
+        stars: respVue.data.stargazers_count,
+        forks: respVue.data.forks_count,
+        issues: respVue.data.open_issues_count,
+      },
+      {
+        name: "Ember",
+        watchers: respEmber.data.watchers_count,
+        stars: respEmber.data.stargazers_count,
+        forks: respEmber.data.forks_count,
+        issues: respEmber.data.open_issues_count,
+      },
+    ]
+    setData(dashboardData)
+  }
 
-      main p {
-        font-size: 1.2rem;
-      }
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-      footer {
-        width: 100%;
-        height: 60px;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #45009d;
-      }
+  let width = 400
+  let height = 300
 
-      footer a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer a {
-        color: #f4f4f4;
-        text-decoration: none;
-      }
-
-      .logo {
-        margin-bottom: 2rem;
-      }
-
-      .logo img {
-        width: 300px;
-      }
-
-      .buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 0.5rem;
-        margin-top: 6rem;
-      }
-
-      a.button {
-        background-color: #6700eb;
-        padding: 1rem 2rem;
-        color: #f4f4f4;
-        text-align: center;
-      }
-
-      a.button:hover {
-        background-color: #45009d;
-      }
-
-      a.button-outline {
-        border: 2px solid #6700eb;
-        padding: 1rem 2rem;
-        color: #6700eb;
-        text-align: center;
-      }
-
-      a.button-outline:hover {
-        border-color: #45009d;
-        color: #45009d;
-      }
-
-      pre {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-      }
-      code {
-        font-size: 0.9rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-          Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      .grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        max-width: 800px;
-        margin-top: 3rem;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          width: 100%;
-          flex-direction: column;
-        }
-      }
-    `}</style>
-
-    <style jsx global>{`
-      @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
-
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-
-      * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        box-sizing: border-box;
-      }
-    `}</style>
-  </div>
-)
+  return (
+    <PageWrapper>
+      <Head>
+        <title>Javascript Framework</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {/* <PageTitle>Javascript Framework Stats</PageTitle> */}
+      <Dashboard>
+        <BarChart title="Star Count" data={data} width={width} height={height} dataKey="stars" />
+      </Dashboard>
+    </PageWrapper>
+  )
+}
 
 export default Home

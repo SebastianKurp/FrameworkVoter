@@ -29,6 +29,7 @@
   "dependencies": {
     "@prisma/cli": "2.4.1",
     "@prisma/client": "2.4.1",
+    "axios": "0.19.2",
     "blitz": "0.17.0",
     "react": "0.0.0-experimental-33c3af284",
     "react-dom": "0.0.0-experimental-33c3af284",
