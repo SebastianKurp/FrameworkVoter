@@ -38,15 +38,6 @@ const VotesPage: BlitzPage = () => {
 
       <main>
         <h1>Votes</h1>
-
-        <p>
-          {
-            <Link href="/votes/new">
-              <a>Create Vote</a>
-            </Link>
-          }
-        </p>
-
         <Suspense fallback={<div>Loading...</div>}>
           <VotesList />
         </Suspense>
