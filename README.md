@@ -1,46 +1,56 @@
-[![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
+# Javascript Framework Voter App
 
-This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
+### Built as a coding assessment for FullStack Labs
 
-# frameworkVote
+### Build Time 4 Hours
 
-## Getting Started
+## Technologies/Libraries Used
 
-Run your app in the development mode.
+- [Blitz.js](https://blitzjs.com/) :Wanted to try it out as it's a ruby on rails like framework that uses primsa and nextJs. The database language I chose was PSQL, but you can use SQLlite if you want.
+- [axios](https://github.com/axios/axios) : Used for easy fetching of the data from the Github API
+- [recharts](https://recharts.org/en-US/) : Charting Library for React
+- [styled-components](https://styled-components.com/) :Didn't want the hassle of stylesheets or implementing tailwind so I went with styled components
+- [Coolors](https://coolors.co/092327-0b5351-00a9a5-4e8098-90c2e7) : Needed to generate a quick color schema -[render.com]() : Used this as the hosting site cause blitz recommends it.
 
-```
-blitz start
-```
+## Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To get started for this assessment I begun by writing out the requirements:
 
-## Commands
+- [x] needed to fetch data from github api
+- [x] needed to be able to refresh that data
+- [x] needed to be able to show that data in some visually appealing way
+- [x] needed to capture and store a users vote on their favorite framework, the same email and browser session could not vote this.
 
-Blitz comes with a powerful CLI that is designed to make development easy and fast. You can install it with `npm i -g blitz`
+## Why I went with Blitz.js?
 
-```
-  blitz [COMMAND]
+Great question, um to be honest I didn't want to setup a seperate folder and deal with running a server and database for a "simple" project like this. Also the idea of challenging myself to learn a new framework was sorta too good to past up.
 
-  build     Create a production build
-  console   Run the Blitz console REPL
-  db        Run database commands
-  generate  Generate new files for your Blitz project
-  help      display help for blitz
-  start     Start a development server
-  test      Run project tests
-```
+## How was using Blitz.js?
 
-You can read more about it on the [CLI Overview](https://blitzjs.com/docs/cli-overview) documentation.
+So I have never used [Prisma](https://www.prisma.io/) or [next.js](https://nextjs.org/) before so those were two small curve balls thrown at me. Luckly the Blitz team has great documentation and I was able to get understand enough of the two use to start hacking away. Overall I have to say I enjoyed the expierence alot. The ability to create a type safe backend with out having to write out the bolier plate was awesome and I'm starting to really enjoy using prisma on the backend. Also the intergration with the front end was pretty smooth.
 
-## What's included?
+## Build Process
 
-Here is the structure of your app.
+1. Get Blitz Running
+2. Add Rechart and start mocking up a bar chart component
+3. Once the barchart looked well, start learning about the github api.
+4. Made the realization that I had to make multiple calls to the api to get the data
+5. After googling, figured out that axios was the perfect tool for this.
+6. After data was fetched and parse I just dropped it in to the barchart component I made earlier.
+7. After the data looked good, I added the info card with title, refresh button, and form to add your vote. Used React-select cause I didn't want to create select component.
+8. Get hosting on render.com to work.
+
+## Structure of this Repo
 
 ```
 frameworkVote
 ├── app
 │   ├── components
 │   │   └── ErrorBoundary.tsx
+ |.    |.   └── Dashboard
+ |     |              └── BarChart.js
+ |     |              └── InfoDashboardCard.js
+ |     |              └── Dashboard.js
 │   ├── layouts
 │   └── pages
 │       ├── _app.tsx
@@ -69,6 +79,8 @@ frameworkVote
 └── yarn.lock
 ```
 
+## Info About the File Struct
+
 These files are:
 
 - The `app/` directory is a container for most of your project. This is where you’ll put any pages or API routes.
@@ -88,26 +100,3 @@ These files are:
 - `package.json` contains information about your dependencies and devDependencies. If you’re using a tool like `npm` or `yarn`, you won’t have to worry about this much.
 
 - `tsconfig.json` is our recommended setup for TypeScript.
-
-You can read more about it in the [File Structure](https://blitzjs.com/docs/file-structure) section of the documentation.
-
-## Learn more
-
-Read the [Blitz.js Documentation](https://blitzjs.com/docs/getting-started) to learn more.
-
-### The Blitz.js Manifesto
-
-Read the [Blitz Manifesto](https://blitzjs.com/docs/manifesto) to learn the Blitz foundational principles.
-
-Blitz is built on Next.js. For more info on this see [Why use Blitz instead of Next.js](https://blitzjs.com/docs/why-blitz)
-
-## Get in touch
-
-The Blitz community is warm, safe, diverse, inclusive, and fun! Feel free to reach out to us in any of our communication channels.
-
-- [Website](https://blitzjs.com/)
-- [Slack](https://slack.blitzjs.com/)
-- [Report an issue](https://github.com/blitz-js/blitz/issues/new/choose)
-- [Forum discussions](https://github.com/blitz-js/blitz/discussions)
-- [Sponsors and donations](https://github.com/blitz-js/blitz#sponsors-and-donations)
-- [Contributing Guide](https://blitzjs.com/docs/contributing)
