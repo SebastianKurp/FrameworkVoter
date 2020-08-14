@@ -2,6 +2,7 @@ import { useState } from "react"
 import Select from "react-select"
 import styled from "styled-components"
 import { CircleLoader } from "react-spinners"
+import createVote from "app/votes/mutations/createVote"
 
 const Title = styled.span`
   font-size: 24px;
