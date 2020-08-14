@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 // datasource sqlite {
- // provider = "sqlite"
- // url      = "file:./db.sqlite"
+//  provider = "sqlite"
+//  url      = "file:./db.sqlite"
 // }
 
 // SQLite is easy to start with, but if you use Postgres in production
