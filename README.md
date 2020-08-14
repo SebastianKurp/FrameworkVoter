@@ -13,7 +13,7 @@
 - [recharts](https://recharts.org/en-US/) : Charting Library for React
 - [styled-components](https://styled-components.com/) :Didn't want the hassle of stylesheets or implementing tailwind so I went with styled components
 - [Coolors](https://coolors.co/092327-0b5351-00a9a5-4e8098-90c2e7) : Needed to generate a quick color schema 
-- [render.com]() : Used this as the hosting site cause blitz recommends it and it's super easy to set up
+- [render.com](https://render.com/) : Used this as the hosting site cause blitz recommends it and it's super easy to set up
 
 ## Requirements
 
