@@ -12,7 +12,8 @@
 - [axios](https://github.com/axios/axios) : Used for easy fetching of the data from the Github API
 - [recharts](https://recharts.org/en-US/) : Charting Library for React
 - [styled-components](https://styled-components.com/) :Didn't want the hassle of stylesheets or implementing tailwind so I went with styled components
-- [Coolors](https://coolors.co/092327-0b5351-00a9a5-4e8098-90c2e7) : Needed to generate a quick color schema -[render.com]() : Used this as the hosting site cause blitz recommends it.
+- [Coolors](https://coolors.co/092327-0b5351-00a9a5-4e8098-90c2e7) : Needed to generate a quick color schema 
+- [render.com]() : Used this as the hosting site cause blitz recommends it and it's super easy to set up
 
 ## Requirements
 
@@ -21,7 +22,8 @@ To get started for this assessment I begun by writing out the requirements:
 - [x] needed to fetch data from github api
 - [x] needed to be able to refresh that data
 - [x] needed to be able to show that data in some visually appealing way
-- [x] needed to capture and store a users vote on their favorite framework, the same email and browser session could not vote this.(to see votes go to `/votes` route)
+- [x] needed to capture and store a users vote on their favorite framework, the same email and browser session could not vote this.(to see votes go to `/votes` route or https://frameworkvoter.onrender.com/votes)
+- [x] needs to be deployed to a hosting site
 
 ## Why I went with Blitz.js?
 
