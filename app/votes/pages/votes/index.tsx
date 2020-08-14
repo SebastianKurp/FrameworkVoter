@@ -19,7 +19,7 @@ export const VotesList = () => {
             <div>
               <ListItem>Choice: {vote.choice}</ListItem>
               <ListItem>Email: {vote.email}</ListItem>
-              <ListItem>Vote: {vote.createdAt}</ListItem>
+              <ListItem>Vote Created At: {vote.createdAt}</ListItem>
             </div>
           </Link>
         </li>
