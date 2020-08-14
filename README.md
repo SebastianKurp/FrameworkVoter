@@ -4,6 +4,8 @@
 
 ### Build Time 4 Hours
 
+[![Screenshot of the final build](https://github.com/SebastianKurp/FrameworkVoter/blob/master/githubReadMePhoto.png "Screenshot of the final build")](http://https://github.com/SebastianKurp/FrameworkVoter/blob/master/githubReadMePhoto.png "Screenshot of the final build")
+
 ## Technologies/Libraries Used
 
 - [Blitz.js](https://blitzjs.com/) :Wanted to try it out as it's a ruby on rails like framework that uses primsa and nextJs. The database language I chose was PSQL, but you can use SQLlite if you want.
@@ -19,7 +21,7 @@ To get started for this assessment I begun by writing out the requirements:
 - [x] needed to fetch data from github api
 - [x] needed to be able to refresh that data
 - [x] needed to be able to show that data in some visually appealing way
-- [x] needed to capture and store a users vote on their favorite framework, the same email and browser session could not vote this.
+- [x] needed to capture and store a users vote on their favorite framework, the same email and browser session could not vote this.(to see votes go to `/votes` route)
 
 ## Why I went with Blitz.js?
 
