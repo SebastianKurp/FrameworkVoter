@@ -3,7 +3,9 @@ import { Head } from "blitz"
 import styled from "styled-components"
 import axios from "axios"
 import { CircleLoader } from "react-spinners"
+import Select from "react-select"
 import BarChart from "../components/BarChart"
+import createVote from "app/votes/mutations/createVote"
 
 const PageWrapper = styled.div`
   display: flex;
@@ -89,12 +91,37 @@ const Card = styled.div`
   padding: 13px;
 `
 
+const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Input = styled.input`
+  height: 38px;
+  margin-right: 10px;
+`
+const MultiSelect = styled(Select)`
+  width: 140px;
+  margin-right: 10px;
+`
+
 const ErrorMessage = () => {
   return <ErrorMsg>Error: Github API Limit Reached!</ErrorMsg>
 }
 
 const DashboardCard = ({ width, height, fetchData }) => {
   const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("")
+  const [framework, setFramework] = useState()
+
+  const options = [
+    { value: "react", label: "React" },
+    { value: "angular", label: "Angular" },
+    { value: "ember", label: "Ember" },
+    { value: "vue", label: "Vue" },
+  ]
 
   const cardStyle = {
     minWidth: `${width}px`,
@@ -107,7 +134,7 @@ const DashboardCard = ({ width, height, fetchData }) => {
       <Title>Javascript Frameworks Data</Title>
       <Paragraph>
         A dashboard for seeing data from popular frontend Javascript libraries. Click Vote below to
-        submit your choice for your favourite framework!
+        submit your choice for your favorite framework!
       </Paragraph>
       {loading ? (
         <Button>
@@ -123,6 +150,34 @@ const DashboardCard = ({ width, height, fetchData }) => {
           Refresh Data
         </Button>
       )}
+      <span>Vote For Your Favorite Framework</span>
+      <Form
+        onSubmit={async (event) => {
+          event.preventDefault()
+          try {
+            await createVote({
+              data: { email: email, choice: framework.value, browserSession: "" },
+            })
+            alert("Success!" + ` You Voted For ${framework.label}.`)
+          } catch (error) {
+            alert(error)
+          }
+        }}
+      >
+        <Input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <MultiSelect
+          value={framework}
+          placeholder="Framework"
+          onChange={setFramework}
+          options={options}
+        />
+        <button>Submit</button>
+      </Form>
     </Card>
   )
 }
