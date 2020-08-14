@@ -1,7 +1,13 @@
 import React, { Suspense } from "react"
 import { Head, Link, useQuery, BlitzPage } from "blitz"
 import getVotes from "app/votes/queries/getVotes"
+import styled from "styled-components"
 
+const ListItem = styled.a`
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 4px;
+`
 export const VotesList = () => {
   const [votes] = useQuery(getVotes, { orderBy: { id: "desc" } })
 
@@ -10,7 +16,11 @@ export const VotesList = () => {
       {votes.map((vote) => (
         <li key={vote.id}>
           <Link href="/votes/[voteId]" as={`/votes/${vote.id}`}>
-            <a>{vote.name}</a>
+            <div>
+              <ListItem>Choice: {vote.choice}</ListItem>
+              <ListItem>Email: {vote.email}</ListItem>
+              <ListItem>Vote: {vote.createdAt}</ListItem>
+            </div>
           </Link>
         </li>
       ))}

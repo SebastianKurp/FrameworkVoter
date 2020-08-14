@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import axios from "axios"
 import InfoDashboardCard from "./InfoDashboardCard"
-import BarChart from "../BarChart"
+import BarChart from "./BarChart"
 
 const DashboardPanel = styled.div`
   display: flex;
@@ -47,7 +47,6 @@ const ErrorMessage = () => {
 const Dashboard = () => {
   const [data, setData] = useState([{}])
   const [showErrorMsg, setShowErrorMsg] = useState(false)
-
   const fetchData = async () => {
     const respReact = await axios(`https://api.github.com/repos/facebook/react`).catch(() =>
       setShowErrorMsg(true)

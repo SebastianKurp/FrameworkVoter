@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import { Head } from "blitz"
 import styled from "styled-components"
 import Dashboard from "../components/Dashboard/Dashboard"
